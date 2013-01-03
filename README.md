@@ -1,3 +1,6 @@
+This is a fork of the excellent Subway aiming at support for WeeChat relay protocol.  
+For now it will incoroprate weechat.js directly
+
 Subway
 ======
 
