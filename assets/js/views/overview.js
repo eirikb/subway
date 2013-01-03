@@ -49,45 +49,30 @@ var OverviewView = Backbone.View.extend({
     $('.error').removeClass('error');
 
     var server = $('#connect-server').val(),
-    nick = $('#connect-nick').val(),
     port = $('#connect-port').val(),
-    away = $('#connect-away').val(),
-    realName = $('#connect-realName').val() || nick,
-    secure = $('#connect-secure').is(':checked'),
-    selfSigned = $('#connect-selfSigned').is(':checked'),
-    rejoin = $('#connect-rejoin').is(':checked'),
-    password = $('#connect-password').val(),
-    encoding = $('#connect-encoding').val(),
-    keepAlive = false;
+    password = $('#connect-password').val();
+
+    // TODO: REMOVE
+    server = 'localhost';
+    port = 8000;
+    password = 'test';
     
     if (!server) {
       $('#connect-server').closest('.control-group').addClass('error');
     }
     
-    if (!nick) {
-      $('#connect-nick').closest('.control-group').addClass('error');
-    }
-
     if (irc.loggedIn && $('#connect-keep-alive').length) {
       keepAlive = $('#connect-keep-alive').is(':checked');
     }
     
-    if (nick && server) {
+    if (server) {
       $('form').append(ich.load_image());
       $('#connect-button').addClass('disabled');
 
       var connectInfo = {
-        nick: nick,
         server: server,
         port: port,
-        secure: secure,
-        selfSigned: selfSigned,
-        rejoin: rejoin,
-        away: away,
-        realName: realName,
-        password: password,
-        encoding: encoding,
-        keepAlive: keepAlive
+        password: password
       };
 
       irc.me = new User(connectInfo);

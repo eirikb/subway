@@ -38,12 +38,12 @@ var ChatView = Backbone.View.extend({
   handleInput: function() {
     $('#chat-button').click( function(){
       var message = $('#chat-input').val();
-      if (message.substr(0, 1) === '/') {
-        var commandText = message.substr(1).split(' ');
-        irc.commands.handle(commandText);
-      } else {
-        irc.socket.emit('say', {target: irc.chatWindows.getActive().get('name'), message:message});
-      }
+//      if (message.substr(0, 1) === '/') {
+//        var commandText = message.substr(1).split(' ');
+//        irc.commands.handle(commandText);
+//      } else {
+      irc.socket.emit('say', {target: irc.chatWindows.getActive().get('name'), message:message});
+//      }
       $('#chat-input').val('');
     });
 
@@ -74,14 +74,14 @@ var ChatView = Backbone.View.extend({
           if (keydownEnter && event.keyCode === 13) {
             var message = $(this).val();
             // Handle IRC commands
-            if (message.substr(0, 1) === '/') {
-              var commandText = message.substr(1).split(' ');
-              irc.commands.handle(commandText);
-            } else {
+//            if (message.substr(0, 1) === '/') {
+//              var commandText = message.substr(1).split(' ');
+//              irc.commands.handle(commandText);
+//            } else {
               // Send the message
-              console.log(irc.chatWindows.getActive().get('name'));
-              irc.socket.emit('say', {target: irc.chatWindows.getActive().get('name'), message:message});
-            }
+            console.log(irc.chatWindows.getActive().get('name'));
+            irc.socket.emit('say', {target: irc.chatWindows.getActive().get('name'), message:message});
+//            }
             $(this).val('');
             $('#chat-button').addClass('disabled');
           } else if (event.keyCode == 9) {
@@ -143,6 +143,7 @@ var ChatView = Backbone.View.extend({
   },
 
   addMessage: function(msg) {
+      console.log(msg);
     var $chatWindow = this.$('#chat-contents');
     var view = new MessageView({model: msg});
     var sender = msg.get('sender');
