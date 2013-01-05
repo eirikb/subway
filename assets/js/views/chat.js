@@ -42,7 +42,7 @@ var ChatView = Backbone.View.extend({
 //        var commandText = message.substr(1).split(' ');
 //        irc.commands.handle(commandText);
 //      } else {
-      irc.socket.emit('say', {target: irc.chatWindows.getActive().get('name'), message:message});
+      irc.socket.emit('say', {target: irc.chatWindows.getActive().get('id'), message:message});
 //      }
       $('#chat-input').val('');
     });
@@ -80,7 +80,7 @@ var ChatView = Backbone.View.extend({
 //            } else {
               // Send the message
             console.log(irc.chatWindows.getActive().get('name'));
-            irc.socket.emit('say', {target: irc.chatWindows.getActive().get('name'), message:message});
+            irc.socket.emit('say', {target: irc.chatWindows.getActive().get('id'), message:message});
 //            }
             $(this).val('');
             $('#chat-button').addClass('disabled');

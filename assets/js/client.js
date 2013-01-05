@@ -104,9 +104,9 @@ $(function() {
     $.each(data.channels, function(key, value){
       var chanName = value.serverName.toLowerCase();
       if(chanName[0] == '#'){
-        irc.chatWindows.add({name: chanName, initial: true});
+        irc.chatWindows.add({name: chanName, initial: true, id: value.id});
       } else {
-        irc.chatWindows.add({name: chanName, type: 'pm', initial: true});
+        irc.chatWindows.add({name: chanName, type: 'pm', initial: true, id: value.id});
       }
       var channel = irc.chatWindows.getByName(chanName);
       var channelTabs = irc.appView.channelList.channelTabs;
