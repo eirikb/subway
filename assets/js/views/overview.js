@@ -53,9 +53,11 @@ var OverviewView = Backbone.View.extend({
     password = $('#connect-password').val();
 
     // TODO: REMOVE
-    server = 'localhost';
-    port = 8000;
-    password = 'test';
+    if (('' + server).length === 0) {
+      server = 'localhost';
+      port = 8000;
+      password = 'test';
+    }
     
     if (!server) {
       $('#connect-server').closest('.control-group').addClass('error');
