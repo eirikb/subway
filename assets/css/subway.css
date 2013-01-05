@@ -482,3 +482,26 @@ div.embed-toggle {
   color: #666666;
 }
 
+#logo {
+  width: 200px;
+  height: 200px;
+  display: block;
+  position: relative;
+}
+
+#logo img {
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s ease-in;
+  -moz-transition: opacity 0.3s ease-in;
+  -o-transition: opacity 0.3s ease-in;
+}
+
+#logo img:last-child {
+  opacity: 0;
+}
+
+#logo:hover img:last-child {
+  opacity: 1;
+}
+
