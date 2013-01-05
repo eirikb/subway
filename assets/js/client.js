@@ -173,7 +173,7 @@ $(function() {
   });
 
   irc.socket.on('message', function(data) {
-    var chatWindow = irc.chatWindows.getByName(data.to.toLowerCase());
+    var chatWindow = irc.chatWindows.getById(data.to.toLowerCase());
     var type = 'message';
     // Only handle channel messages here; PMs handled separately
     if (data.to.substr(0, 1) === '#') {

@@ -19,6 +19,12 @@ var WindowList = Backbone.Collection.extend({
     this.bind('add', this.setActive, this);
   },
 
+  getById: function(id) {
+    return this.find(function(chat) {
+      return chat.get('id') === id;
+    });
+  },
+
   getByName: function(name) {
     return this.find(function(chat) {
       return chat.get('name') === name;
