@@ -122,9 +122,9 @@ $(function() {
         $.each(value.users, function(user, role) {
           channel.userList.add({nick: user, role: role, idle:0, user_status: 'idle', activity: ''});
         });
-        irc.socket.emit('getOldMessages',{channelName: chanName, skip:0, amount: 50});
+        irc.socket.emit('getOldMessages',{id: value.id, skip:0, amount: 50});
       } else {
-        irc.socket.emit('getOldMessages',{channelName: chanName, skip:0, amount: 50});
+        irc.socket.emit('getOldMessages',{id: value.id, skip:0, amount: 50});
         channel.stream.add(new Message({sender:'', raw:''}));
       }
     });
@@ -308,7 +308,7 @@ $(function() {
 
   irc.socket.on('oldMessages', function(data){
     var output = '';
-    channel = irc.chatWindows.getByName(data.name);
+    channel = irc.chatWindows.getById(data.id);
 
     if (data.messages) {
         $.each(data.messages.reverse(), function(index, message){
