@@ -196,13 +196,13 @@ $(function() {
   });
 
   irc.socket.on('join', function(data) {
-    var chanName = data.channel.toLowerCase();
+    var channel = irc.chatWindows.getById(data.to.toLowerCase());
+    var chanName = channel.name;
     console.log('Join event received for ' + chanName + ' - ' + data.nick);
     if (data.nick === irc.me.get('nick')) {
       irc.chatWindows.add({name: chanName});
       irc.socket.emit('getOldMessages',{channelName: chanName, skip:0, amount: 50});
     } else {
-      var channel = irc.chatWindows.getByName(chanName);
       if (typeof channel === 'undefined') {
         irc.chatWindows.add({name: chanName});
         channel = irc.chatWindows.getByName(chanName);
