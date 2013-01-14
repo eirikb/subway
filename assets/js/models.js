@@ -19,7 +19,8 @@ var Message = Backbone.Model.extend({
 
   parse: function(text) {
     var nick = this.get('sender') || this.collection.channel.get('name');
-    var result = utils.linkify(text);
+    var result = text;
+        //utils.linkify(text);
     if (nick !== irc.me.get('nick')) {
       result = utils.mentions(result);
     }
