@@ -289,6 +289,10 @@ $(function() {
     irc.appView.showError('Invalid server');
   });
 
+  irc.socket.on('passError', function(data) {
+    irc.appView.showError('Wrong password');
+  });
+
   irc.socket.on('login_error', function(data) {
     irc.appView.showError(data.message);
   });
@@ -339,11 +343,13 @@ $(function() {
             message_html = utils.mentions(message_html);
           }
 
-          message_html = utils.linkify(message_html);
+          // TODO: Implement jQuery oembed https://github.com/starfishmod/jquery-oembed-all
+          //message_html = utils.linkify(message_html);
           message_html = "<div id=\"" + message._id + "\" class=\"message-box " + type + "\">" + message_html + "</div>";
           output += message_html;
         });
     }
+
 
     var old_height = channel.view.$('#chat-contents')[0].scrollHeight;
     channel.view.$('#chat-contents').prepend(output);
