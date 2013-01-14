@@ -41,7 +41,6 @@ var ChatWindow = Backbone.Model.extend({
   },
 
   initialize: function() {
-    console.log('chat window created');
     this.stream = new Stream();
     this.stream.bind('add', this.setUnread, this);
     //Backbone's collections don't support

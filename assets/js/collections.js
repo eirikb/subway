@@ -44,7 +44,6 @@ var WindowList = Backbone.Collection.extend({
       selected.set({active: false});
       return;
     }
-    console.log(name + ' set as active chat!');
     this.each(function(chat) {
       chat.set({active: false});
     });

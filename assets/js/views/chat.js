@@ -143,7 +143,6 @@ var ChatView = Backbone.View.extend({
   },
 
   addMessage: function(msg) {
-      console.log(msg);
     var $chatWindow = this.$('#chat-contents');
     var view = new MessageView({model: msg});
     var sender = msg.get('sender');
