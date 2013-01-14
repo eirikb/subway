@@ -8,7 +8,6 @@ script(id="chat_application", type="text/html")
       small IRC Client
       br
       small WeeChat style
-    #user-box
     #channels
       #slide-prev.slide
       #slide-next.slide
@@ -106,6 +105,9 @@ script(id="chat", type="text/html")
       #user-list.bar
     #user-window-toggle
       img(src="/assets/images/register.svg")
+
+script(id="network", type="text/html")
+  #user-box {{name}}
 
 script(id="channel", type="text/html")
   span(class="channel-name") {{name}}
