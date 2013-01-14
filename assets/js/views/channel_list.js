@@ -17,7 +17,7 @@ var ChannelListView = Backbone.View.extend({
     $('.slide').css('display', 'inline-block');
     this.channelTabs = []
     $el.resize(function() {
-        $el.height($container.height());
+        $el.height($container.height() - $el.position().top);
     }).resize();
   },
 
