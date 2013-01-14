@@ -25,11 +25,12 @@ var WindowList = Backbone.Collection.extend({
     });
   },
 
-  getByName: function(name) {
-    return this.find(function(chat) {
-      return chat.get('name') === name;
-    });
-  },
+  // Removed because of getById
+  //getByName: function(name) {
+  //  return this.find(function(chat) {
+  //    return chat.get('name') === name;
+  //  });
+  //},
 
   getActive: function() {
     return this.find(function(chat) {
