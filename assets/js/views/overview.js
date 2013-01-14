@@ -54,7 +54,7 @@ var OverviewView = Backbone.View.extend({
 
     // TODO: REMOVE
     if (('' + server).length === 0) {
-      server = 'localhost';
+      server = '10.0.0.16';
       port = 8000;
       password = 'test';
     }
