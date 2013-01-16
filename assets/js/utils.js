@@ -37,6 +37,7 @@ window.utils = {
       links.push(href);
       return '<a href="' + href + '" target="_blank">' + url + '</a>';
     });
+    return parsed;
     if (links.length>0){
       //Look for embeddable media in all the links
       for (var i=0; i<links.length; i++){

@@ -341,7 +341,7 @@ $(function() {
           }
 
           // TODO: Implement jQuery oembed https://github.com/starfishmod/jquery-oembed-all
-          //message_html = utils.linkify(message_html);
+          message_html = utils.linkify(message_html);
           message_html = "<div id=\"" + message._id + "\" class=\"message-box " + type + "\">" + message_html + "</div>";
           output += message_html;
         });
