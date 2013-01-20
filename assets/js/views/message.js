@@ -8,6 +8,11 @@ var MessageView = Backbone.View.extend({
   render: function() {
     var nick = this.model.get('sender') || this.model.collection.channel.get('name');
     var html;
+    var nickColor;
+    if (_.isArray(nick)) {
+        nickColor = nick[0].fg.split(' ').join('');
+        nick = nick[0].text;
+    }
 
     if (_.include(['join', 'part', 'nick', 'topic', 'quit'], this.model.get('type')))
       html = this.setText(this.model.get('type'));
@@ -30,6 +35,7 @@ var MessageView = Backbone.View.extend({
     }
 
     $(this.el).html(html);
+    $(this.el).find('.chat-name b').css({color: nickColor});
     return this;
   },
 
